@@ -32,5 +32,21 @@ public class MainActivity extends AppCompatActivity {
                }
            }
        }).start();
+
+        //-主线程自己刷新随机数---------------------------------------------------------------------------
+        //仅控制台能刷新而界面文本则不能
+        try {
+                for (int i=0;i<5;i++) {
+                    Thread.sleep(300); // 线程休眠0.3s
+                    Double random = Math.random();
+                    System.out.println(random); // 生成控制台打印
+                    mTxt.setText("生成的随机数为："+random);
+                }
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
+
 }
