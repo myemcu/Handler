@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
         mTxt = (TextView) findViewById(R.id.txt);
 
-        // 创建Habdler对象
+        // 创建Habdler对象(收,发消息均为同一个Handler对象,此处为mMyHandler对象)
         mMyHandler = new Handler() {
             public void handleMessage(Message msg) {
                 super.handleMessage(msg);
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
            public void run() {
                try {
                     while (true) {
-                        Thread.sleep(500);              // 线程延时0.5s
+                        Thread.sleep(500);              // 线程延时0.5s(线程动作)
                         Message msg = new Message();    // 建立消息
                         msg.what=0x12;                  // 标记消息
                         mMyHandler.sendMessage(msg);    // 发送消息
